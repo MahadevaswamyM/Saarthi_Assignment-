@@ -1,0 +1,69 @@
+6.Write a python program to convert a list of dictionaries which may contain duplicate dictonaries into a list containing unique dictionaries.
+
+  Example - Input
+            dict_list=[{'name': 'affirm', 'confidence': 0.9448149204254}, {'name': 'affirm', 'confidence': 0.944814920425415}, {'name': 'inform', 'confidence': 0.9842240810394287}, {'name': 'inform', 'confidence': 0.9842240810394287}]
+
+            output=[{'name': 'affirm', 'confidence': 0.9448149204254}, {'name': 'affirm', 'confidence': 0.944814920425415}, {'name': 'inform', 'confidence': 0.9842240810394287}]
+PythonCode:
+	dict_list=[{'name': 'affirm', 'confidence': 0.9448149204254},
+     {'name': 'affirm', 'confidence': 0.944814920425415},
+     {'name': 'inform', 'confidence': 0.9842240810394287}, 
+     {'name': 'inform', 'confidence': 0.9842240810394287}]
+seen = set()
+new_dict_list = []
+for d in dict_list:
+    t = tuple(d.items())
+    if t not in seen:
+        seen.add(t)
+        new_dict_list.append(d)
+
+print(new_dict_list)
+
+
+
+7.Write a Python program to check the validity of password input by users. It should validate the password with given below conditions.
+
+          *At least 1 letter between [a-z] and 1 letter between [A-Z].
+          *At least 1 number between [0-9].
+          *At least 1 special character [!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~].
+          *Minimum length 6 characters.
+          *Maximum length 16 characters.
+PythonCode:
+		import re
+p= input("Input your password")
+x = True
+while x:  
+    if (len(p)<6 or len(p)>12):
+        break
+    elif not re.search("[a-z]",p):
+        break
+    elif not re.search("[0-9]",p):
+        break
+    elif not re.search("[A-Z]",p):
+        break
+    elif not re.search("[$#@]",p):
+        break
+    elif re.search("\s",p):
+        break
+    else:
+        print("Valid Password")
+        x=False
+        break
+
+if x:
+    print("Not a Valid Password")
+
+8.Write a Python program to combine two dictionary adding values for common keys.
+
+                   d1 = {'a': 100, 'b': 200, 'c':300}
+                   d2 = {'a': 300, 'b': 200, 'd':400}
+                   output= {'a': 400, 'b': 400, 'd': 400, 'c': 300}
+Python_Code
+
+from collections import Counter
+d1 = {'a': 100, 'b': 200, 'c':300}
+d2 = {'a': 300, 'b': 200, 'd':400}
+Cdict = Counter(d1) + Counter(d2)
+print(Cdict)
+
+
